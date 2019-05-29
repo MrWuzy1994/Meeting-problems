@@ -1,0 +1,114 @@
+js 文件乱码  
+    ①将js文件中的内容全部复制，新建一个txt文件，粘贴进去
+    ②然后选择另存为：将编码选择为utf-8
+    ③将保存类型选择为所有文件
+    ④文件名选择为js文件，然后将原来的js文件覆盖掉
+
+
+
+插入时附带ID
+<insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.demo.domain.User">
+2 insert into User_t(name,age,addr) values(#{name},#{age},#{addr})
+3 </insert>
+
+
+查看mysql 锁表
+show open tables where in_use > 0
+
+
+
+mybatis mapper文件  不能用java 注释
+
+
+
+mybatis foreach
+<foreach collection="list" item="l" index="index" open="(" separator="," close=")">
+</foreach>
+index:当前循环的下标
+
+
+
+mysql 表时间戳默认值
+CURRENT_TIMESTAMP
+
+
+bootstrap modal 隐藏出发事件
+$("#id").on("hidden.bs.modal",function(){}）
+
+
+表单reset坑
+$("#id")[0].reset();
+
+
+js 判断undefined
+typeof  (var)  == "undefined"
+
+
+jquery 中 each使用
+$.each(data,function(i,val){})
+each 中不能直接使用continue 和 break
+替换  continue -----return true;
+         break      -----return false;
+		 
+		 
+java List<Map> 比较大小
+Collections.sort(list,new Comparator<Map<String,Object>>(){
+	@Override
+	public int compare(Map<String,Object>o1,Map<String,Object> o2){
+		if(o1.get(key) == null && o2.get(key)==null){
+			return 0;
+		}
+		if(o1.get(key) == null){
+			return -1;
+		}
+		if(o2.get(key) == null){
+			return 1;
+		}
+		
+		return o1.get(key).compareTo(o2.get(key));
+	}
+});
+
+
+
+
+Linux 防火墙开启指定端口
+1、vi /etc/sysconfig/iptables 
+2、添加 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+3、重启 service iptables restart
+
+
+
+sql查询如果为null，给默认值
+select COALESCE(fieldName,'defaultValue') as fieldName  from tableName
+
+
+
+jquery 遍历 map 
+for(var key in map){
+	var value = map[key];
+}
+
+$.each(map,function(key,value)){
+	
+})
+
+
+
+
+
+
+
+修改表数据时，修改条件是多个，可做连接成一个uk以后做where条件
+update tableA set field1 where field2 in (
+	select concat(field2 ,field3) uk
+	from tableB
+)
+
+
+
+
+
+poi导出excel 问题
+java.lang.NoClassDefFoundError: sun/awt/X11GraphicsEnvironment
+在tomcat配置文件catalina.sh文件中添加 CATALINA_OPTS="-Djava.awt.headless=true"
