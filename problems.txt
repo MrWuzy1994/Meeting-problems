@@ -112,3 +112,8 @@ update tableA set field1 where field2 in (
 poi导出excel 问题
 java.lang.NoClassDefFoundError: sun/awt/X11GraphicsEnvironment
 在tomcat配置文件catalina.sh文件中添加 CATALINA_OPTS="-Djava.awt.headless=true"
+
+
+
+后台返回的map数据,获取map数据中key的个数
+Object.keys(datas).length
